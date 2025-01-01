@@ -1,26 +1,32 @@
-#include "ft_printf_bonus.h"
+#include "ft_printf.h"
 
-int ft_printf(char *format, ...)
+int	ft_printf(const char *format, ...)
 {
-    int i = 0;
-    int count;
-    va_list args;
-    t_format **struct_array = create_struct_array(format);
-    void *content;
+	int			j;
+	int			i;
+	int			count;
+	va_list		args;
+	t_format	**struct_array;
 
-    va_start(args, format);
-    content = va_arg(args, void *);
-
-    while(format[i])
-    {
-        if (format[i] == '%')
-        {
-            //struct_to_string --> Function to translate struct into string.
-            jump_index(format,&i); //Skip to next % or end.
-        }
-        else
-            ft_putchar_count(format[i++],&count);
-    }
-    va_end(args);
-    return count;
+	j = 0;
+	i = 0;
+	count = 0;
+	struct_array = create_struct_array(format);
+	va_start(args, format);
+	while (format[i])
+	{
+		if (format[i] == '%')
+		{
+			struct_to_string(struct_array[j], args, &count);
+			jump_index(format, &i); // Skip to next % or end.
+			j++;
+		}
+		else if (format[i])
+		{
+			ft_putchar_count(format[i], &count);
+			i++;
+		}
+	}
+	va_end(args);
+	return (count);
 }
