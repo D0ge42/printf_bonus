@@ -1,9 +1,0 @@
-{
-    "files.associations": {
-        "ft_printf_bonus.h": "c",
-        "ft_printf.h": "c",
-        "perc_handler": "cpp",
-        "algorithm": "cpp",
-        "limits.h": "c"
-    }
-}
