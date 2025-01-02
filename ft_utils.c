@@ -25,13 +25,24 @@ int	is_digit(char c)
 int	perc_counter(char c, const char *str)
 {
 	int	count;
+	int	i;
 
+	i = 0;
 	count = 0;
-	while (*str)
+	while (str[i])
 	{
-		if (c == *str)
+		if (c == str[i] && is_conversion(str[i + 1]))
+		{
 			count++;
-		str++;
+			i += 2;
+		}
+		else if (c == str[i])
+		{
+			count++;
+			i++;
+		}
+		else
+			i++;
 	}
 	return (count);
 }
@@ -44,16 +55,4 @@ void	jump_index(const char *format, int *i)
 		(*i)++;
 	if (is_conversion(format[*i]))
 		(*i)++;
-}
-
-void	print_struct(t_format *new)
-{
-	printf("ZERO = %i\n", new->zero);
-	printf("MINUS = %i\n", new->minus);
-	printf("PLUS = %i\n", new->plus);
-	printf("HASH = %i\n", new->hashtag);
-	printf("SPACE = %i\n", new->space);
-	printf("WIDTH = %i\n", new->width);
-	printf("PRECISION = %i\n", new->precision);
-	printf("CONVERSION = %c\n", new->conversion);
 }

@@ -18,15 +18,13 @@ int	ft_printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			struct_to_string(struct_array[j], args, &count);
-			jump_index(format, &i); // Skip to next % or end.
+			jump_index(format, &i);
 			j++;
 		}
 		else if (format[i])
-		{
-			ft_putchar_count(format[i], &count);
-			i++;
-		}
+			ft_putchar_count(format[i++], &count);
 	}
+	free_structs(struct_array, format);
 	va_end(args);
 	return (count);
 }
