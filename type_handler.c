@@ -59,16 +59,11 @@ void	string_handler(t_format *new, va_list args, int *count)
 		str = "";
 		len = 0;
 	}
-	if (spaces > 0 && (new->minus == 0 || new->minus == 1))
-	{
-		if (new->minus == 0)
-			space_writer(spaces, count);
-		ft_putstr_count(str, count, new, len);
-		if (new->minus == 1)
-			space_writer(spaces, count);
-	}
-	else
-		ft_putstr_count(str, count, new, len);
+	if (new->minus == 0 && spaces > 0)
+		space_writer(spaces, count);
+	ft_putstr_count(str, count, new, len);
+	if (new->minus == 1 && spaces > 0)
+		space_writer(spaces, count);
 }
 
 // void handle_spaces(t_format *new, int spaces, char *str, int len)

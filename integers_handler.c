@@ -90,8 +90,11 @@ void	no_padding(t_format *new, long long num, int *count)
 
 void	int_handler(t_format *new, va_list args, int *count)
 {
-	int num = va_arg(args, int);
-	int spaces = new->width - count_digits(num);
+	int	spaces;
+	int num;
+
+	num = va_arg(args, int);
+	spaces = new->width - max(new->precision,count_digits(num)); //max precision/num
 	if (new->conversion == 'i' || new->conversion == 'd')
 	{
 		if (spaces > 0 && new->minus == 0)

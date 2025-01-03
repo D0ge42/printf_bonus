@@ -40,7 +40,7 @@ void		zero_writer(int zeros, int *count);
 void		free_structs(t_format **struct_array, const char *format);
 void		initialize_struct(t_format *new_s);
 int			count_udigits(unsigned int num);
-int         ft_atoi(const char *str);
+int			ft_atoi(const char *str);
 
 // Width precision and len calc
 // int calculate_len(void *content, t_format *format);
@@ -51,11 +51,14 @@ int			ft_printf(const char *format, ...);
 
 // Integer/Decimal paddings
 void		left_padding(t_format *new_s, long long nb, int *count, int spaces);
-void		right_padding(t_format *new_s, long long nb, int *count, int spaces);
+void		right_padding(t_format *new_s, long long nb, int *count,
+				int spaces);
 void		no_padding(t_format *new_s, long long nb, int *count);
-void		u_left_padding(t_format *new_s, unsigned nb, int *count, int spaces);
-void		u_right_padding(t_format *new_s, unsigned nb, int *count, int spaces);
-void		u_no_padding(t_format *new_s, unsigned nb, int *count);
+void		u_left_padding(t_format *new_s, unsigned int nb, int *count,
+				int spaces);
+void		u_right_padding(t_format *new_s, unsigned int nb, int *count,
+				int spaces);
+void		u_no_padding(t_format *new_s, unsigned int nb, int *count);
 void		hexa_left_padding(t_format *new_s, unsigned int nb, int *count,
 				int spaces);
 void		hexa_right_padding(t_format *new_s, unsigned int nb, int *count,
@@ -81,7 +84,7 @@ void		perc_handler(t_format *new_s, int *count);
 void		ft_print_pointer(uintptr_t nb, int *count, int flag);
 void		ft_print_hexa(unsigned int nb, int *count, char c);
 void		ft_printnb_count(long long nb, int *count);
-void		ft_printunb_count(unsigned nb, int *count);
+void		ft_printunb_count(unsigned int nb, int *count);
 void		ft_putstr_count(void *str2, int *count, t_format *new_s, int len);
 void		ft_putchar_count(char c, int *count);
 void		ft_putstr(char *str);

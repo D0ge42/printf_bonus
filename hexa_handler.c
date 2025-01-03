@@ -93,7 +93,7 @@ void	hexa_handler(t_format *new, va_list args, int *count)
 	int				spaces;
 
 	num = va_arg(args, unsigned int);
-	spaces = new->width - count_hex_digits(num);
+	spaces = new->width - max(new->precision,count_hex_digits(num));
 	if (new->hashtag == 1)
 		spaces -= 2;
 	if (new->conversion == 'x' || new->conversion == 'X')
