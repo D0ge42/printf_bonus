@@ -70,20 +70,13 @@ void	no_padding(t_format *new, long long num, int *count)
 		if (num >= 0)
 			ft_putchar_count('+', count);
 	}
-	if (precision > 0 && num > 0)
+	if (precision > 0)
 	{
-		while (precision--)
-			ft_putchar_count('0', count);
-	}
-	if (precision > 0 && num == 0)
-	{
-		while (precision--)
-			ft_putchar_count('0', count);
-	}
-	if (precision > 0 && num < 0)
-	{
-		ft_putchar_count('-', count);
-		num *= -1;
+		if (num < 0)
+		{
+			ft_putchar_count('-', count);
+			num *= -1;
+		}
 		while (precision--)
 			ft_putchar_count('0', count);
 	}

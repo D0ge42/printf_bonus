@@ -41,33 +41,48 @@ void	char_handler(t_format *new, va_list args, int *count)
 			ft_putchar_count(c, count);
 	}
 }
+
 void	string_handler(t_format *new, va_list args, int *count)
 {
-	int len;
-	int maxl;
-	int spaces;
-	char *str = va_arg(args, char *);
+	int		len;
+	int		spaces;
+	char	*str;
+
+	str = va_arg(args, char *);
 	if (str)
 		len = ft_strlen(str);
 	else
 		len = 6;
-	maxl = max(new->precision, len);
-	spaces = new->width - maxl;
+	spaces = new->width - max(new->precision, len);
 	if (new->precision == -1)
 	{
 		str = "";
 		len = 0;
 	}
-	if (spaces > 0 && new->minus == 0)
+	if (spaces > 0 && (new->minus == 0 || new->minus == 1))
 	{
-		space_writer(spaces, count);
+		if (new->minus == 0)
+			space_writer(spaces, count);
 		ft_putstr_count(str, count, new, len);
-	}
-	else if (spaces > 0 && new->minus == 1)
-	{
-		ft_putstr_count(str, count, new, len);
-		space_writer(spaces, count);
+		if (new->minus == 1)
+			space_writer(spaces, count);
 	}
 	else
 		ft_putstr_count(str, count, new, len);
 }
+
+// void handle_spaces(t_format *new, int spaces, char *str, int len)
+// {
+// 	if (spaces > 0 && new->minus == 0)
+// 	{
+// 		space_writer(spaces, count);
+// 		ft_putstr_count(str, count, new, len);
+// 	}
+// 	else if (spaces > 0 && new->minus == 1)
+// 	{
+// 		ft_putstr_count(str, count, new, len);
+// 		space_writer(spaces, count);
+// 	}
+// 	else
+// 		ft_putstr_count(str, count, new, len);
+// }

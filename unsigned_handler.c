@@ -1,6 +1,6 @@
 #include "ft_printf.h"
 
-void	u_left_padding(t_format *new, unsigned num, int *count, int spaces)
+void	u_left_padding(t_format *new, unsigned int num, int *count, int spaces)
 {
 	int	precision;
 
@@ -20,7 +20,7 @@ void	u_left_padding(t_format *new, unsigned num, int *count, int spaces)
 	}
 }
 
-void	u_right_padding(t_format *new, unsigned num, int *count, int spaces)
+void	u_right_padding(t_format *new, unsigned int num, int *count, int spaces)
 {
 	int	precision;
 
@@ -37,7 +37,7 @@ void	u_right_padding(t_format *new, unsigned num, int *count, int spaces)
 	ft_printunb_count(num, count);
 }
 
-void	u_no_padding(t_format *new, unsigned num, int *count)
+void	u_no_padding(t_format *new, unsigned int num, int *count)
 {
 	int	precision;
 
@@ -52,8 +52,11 @@ void	u_no_padding(t_format *new, unsigned num, int *count)
 
 void	uint_handler(t_format *new, va_list args, int *count)
 {
-	int num = va_arg(args, unsigned);
-	int spaces = new->width - count_udigits(num);
+	int	num;
+	int	spaces;
+
+	num = va_arg(args, unsigned);
+	spaces = new->width - count_udigits(num);
 	if (new->conversion == 'u')
 	{
 		if (spaces > 0 && new->minus == 0)

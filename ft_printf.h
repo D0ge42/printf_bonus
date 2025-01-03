@@ -38,7 +38,7 @@ void		space_writer(int spaces, int *count);
 int			max(int a, int b);
 void		zero_writer(int zeros, int *count);
 void		free_structs(t_format **struct_array, const char *format);
-void		initialize_struct(t_format *new);
+void		initialize_struct(t_format *new_s);
 int			count_udigits(unsigned int num);
 int         ft_atoi(const char *str);
 
@@ -50,53 +50,53 @@ int			ft_strlen(char *str);
 int			ft_printf(const char *format, ...);
 
 // Integer/Decimal paddings
-void		left_padding(t_format *new, long long nb, int *count, int spaces);
-void		right_padding(t_format *new, long long nb, int *count, int spaces);
-void		no_padding(t_format *new, long long nb, int *count);
-void		u_left_padding(t_format *new, unsigned nb, int *count, int spaces);
-void		u_right_padding(t_format *new, unsigned nb, int *count, int spaces);
-void		u_no_padding(t_format *new, unsigned nb, int *count);
-void		hexa_left_padding(t_format *new, unsigned int nb, int *count,
+void		left_padding(t_format *new_s, long long nb, int *count, int spaces);
+void		right_padding(t_format *new_s, long long nb, int *count, int spaces);
+void		no_padding(t_format *new_s, long long nb, int *count);
+void		u_left_padding(t_format *new_s, unsigned nb, int *count, int spaces);
+void		u_right_padding(t_format *new_s, unsigned nb, int *count, int spaces);
+void		u_no_padding(t_format *new_s, unsigned nb, int *count);
+void		hexa_left_padding(t_format *new_s, unsigned int nb, int *count,
 				int spaces);
-void		hexa_right_padding(t_format *new, unsigned int nb, int *count,
+void		hexa_right_padding(t_format *new_s, unsigned int nb, int *count,
 				int spaces);
-void		hexa_no_padding(t_format *new, unsigned int nb, int *count);
-void		p_left_padding(t_format *new, unsigned long long nb, int *count,
+void		hexa_no_padding(t_format *new_s, unsigned int nb, int *count);
+void		p_left_padding(t_format *new_s, unsigned long long nb, int *count,
 				int spaces);
-void		p_right_padding(t_format *new, unsigned long long nb, int *count,
+void		p_right_padding(t_format *new_s, unsigned long long nb, int *count,
 				int spaces);
-void		p_no_padding(t_format *new, unsigned long long nb, int *count);
+void		p_no_padding(t_format *new_s, unsigned long long nb, int *count);
 
 // Handlers
 
-void		string_handler(t_format *new, va_list args, int *count);
-void		char_handler(t_format *new, va_list args, int *count);
-void		int_handler(t_format *new, va_list args, int *count);
-void		uint_handler(t_format *new, va_list args, int *count);
-void		hexa_handler(t_format *new, va_list args, int *count);
-void		p_handler(t_format *new, va_list args, int *count);
-void		perc_handler(t_format *new, int *count);
+void		string_handler(t_format *new_s, va_list args, int *count);
+void		char_handler(t_format *new_s, va_list args, int *count);
+void		int_handler(t_format *new_s, va_list args, int *count);
+void		uint_handler(t_format *new_s, va_list args, int *count);
+void		hexa_handler(t_format *new_s, va_list args, int *count);
+void		p_handler(t_format *new_s, va_list args, int *count);
+void		perc_handler(t_format *new_s, int *count);
 
 // Printers
 void		ft_print_pointer(uintptr_t nb, int *count, int flag);
 void		ft_print_hexa(unsigned int nb, int *count, char c);
 void		ft_printnb_count(long long nb, int *count);
 void		ft_printunb_count(unsigned nb, int *count);
-void		ft_putstr_count(void *str2, int *count, t_format *new, int len);
+void		ft_putstr_count(void *str2, int *count, t_format *new_s, int len);
 void		ft_putchar_count(char c, int *count);
 void		ft_putstr(char *str);
 
 // Struct handleer
-void		struct_to_string(t_format *new, va_list args, int *count);
+void		struct_to_string(t_format *new_s, va_list args, int *count);
 t_format	*create_struct(const char *format);
 t_format	**create_struct_array(const char *format);
-void		get_flags(t_format *new, const char *format);
+void		get_flags(t_format *new_s, const char *format);
 int			get_width(const char *format);
 int			get_precision(const char *format);
-void		get_conversion(const char *format, t_format *new);
+void		get_conversion(const char *format, t_format *new_s);
 
 // Util functions to remove
-void		print_struct(t_format *new);
+void		print_struct(t_format *new_s);
 // atoi
 
 #endif
