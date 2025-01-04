@@ -56,14 +56,14 @@ int	ft_atoi(const char *str)
 	return (n * s);
 }
 
-void	initialize_struct(t_format *new)
+void	initialize_struct(t_format *new_s)
 {
-	new->plus = 0;
-	new->hashtag = 0;
-	new->minus = 0;
-	new->space = 0;
-	new->zero = 0;
-	new->precision = 0;
-	new->width = 0;
-	new->conversion = 0;
+	new_s->plus = 0;
+	new_s->hashtag = 0;
+	new_s->minus = 0;
+	new_s->space = 0;
+	new_s->zero = 0;
+	new_s->precision = 0;
+	new_s->width = 0;
+	new_s->conversion = 0;
 }

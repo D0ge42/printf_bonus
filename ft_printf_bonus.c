@@ -1,5 +1,18 @@
 #include "ft_printf.h"
 
+// void print_struct(t_format *new)
+// {
+// 	printf("HASH = %i\n",new->hashtag);
+// 	printf("MINUS = %i\n",new->minus);
+// 	printf("PLUS = %i\n",new->plus);
+// 	printf("ZERO = %i\n",new->zero);
+// 	printf("SPACES = %i\n",new->space);
+// 	printf("WIDTH = %i\n",new->width);
+// 	printf("PRECISION = %i\n",new->precision);
+// 	printf("CONVERSION = %c\n",new->conversion);
+// }
+
+
 int	ft_printf(const char *format, ...)
 {
 	int			j;
@@ -29,20 +42,9 @@ int	ft_printf(const char *format, ...)
 	return (count);
 }
 
-// void print_struct(t_format *new)
+// int main()
 // {
-// 	printf("HASH = %i\n",new->hashtag);
-// 	printf("MINUS = %i\n",new->minus);
-// 	printf("PLUS = %i\n",new->plus);
-// 	printf("ZERO = %i\n",new->zero);
-// 	printf("SPACES = %i\n",new->space);
-// 	printf("WIDTH = %i\n",new->width);
-// 	printf("PRECISION = %i\n",new->precision);
-// 	printf("CONVERSION = %c\n",new->conversion);
+// 	ft_printf((" %s ", "-"));
+
 // }
-int main()
-{
-	 //int i = -10;
-	ft_printf(" %.1s %.2s %.3s %.4s ", " - ", "", "434", "");
-	//printf(" %.1s %.2s %.3s %.4s ", " - ", "", "45", "");
-}
+

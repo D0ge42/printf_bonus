@@ -48,20 +48,27 @@ int	get_precision(const char *format)
 	return (ft_atoi(precision));
 }
 
-void	get_conversion(const char *format, t_format *new)
+void get_conversion(const char *format, t_format *new)
 {
-	int	i;
+    int i = 0;
 
-	i = 0;
-	if (format[i] == '%')
-		i++;
-	while (is_flag(format[i]) && format[i] && format[i] != '%')
-		i++;
-	while ((format[i] && format[i] == '.' && format[i] != '%')
-		|| (is_digit(format[i])))
-		i++;
-	if (is_conversion(format[i]))
-		new->conversion = format[i];
+    // Salta il primo '%', se presente
+    if (format[i] == '%')
+        i++;
+
+    // Analizza i flag
+    while (format[i] && is_flag(format[i]))
+        i++;
+
+    // Cerca il carattere di conversione
+    while (format[i] && !is_conversion(format[i]))
+        i++;
+
+    // Controlla se abbiamo trovato un carattere di conversione valido
+    if (format[i] && is_conversion(format[i]))
+        new->conversion = format[i];
+    else
+        new->conversion = '\0';  // Nessun carattere di conversione trovato
 }
 
 void	get_flags(t_format *new, const char *format)
