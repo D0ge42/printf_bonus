@@ -53,7 +53,9 @@ void	string_handler(t_format *new, va_list args, int *count)
 		len = ft_strlen(str);
 	else
 		len = 6;
-	spaces = new->width - max(new->precision, len);
+	spaces = new->width - (len);
+	if(new->precision < len && spaces >= 0)
+		spaces+=new->precision;
 	if (new->precision == -1)
 	{
 		str = "";
