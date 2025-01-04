@@ -6,14 +6,11 @@ int	count_digits(long long num)
 
 	count = 0;
 	if (num == -2147483648)
-		return (11);
+		return (10);
 	if (num == 0)
 		return (1);
 	if (num < 0)
-	{
 		num *= -1;
-		count += 1;
-	}
 	while (num > 0)
 	{
 		count++;

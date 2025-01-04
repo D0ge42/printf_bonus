@@ -41,3 +41,8 @@ int	ft_printf(const char *format, ...)
 	va_end(args);
 	return (count);
 }
+
+// int main()
+// {
+// 	ft_printf("%.s","ciao");
+// }
