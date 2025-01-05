@@ -41,9 +41,3 @@ int	ft_printf(const char *format, ...)
 	va_end(args);
 	return (count);
 }
-
-int main()
-{
-	int i = 0;
-	ft_printf(" %04d ", 9);
-}
