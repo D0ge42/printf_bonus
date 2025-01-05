@@ -56,7 +56,7 @@ void	uint_handler(t_format *new, va_list args, int *count)
 	int	spaces;
 
 	num = va_arg(args, unsigned);
-	spaces = new->width - max(count_udigits(num),new->precision);
+	spaces = new->width - max(count_udigits(num), new->precision);
 	if (new->conversion == 'u')
 	{
 		if (spaces > 0 && new->minus == 0)

@@ -2,9 +2,9 @@
 
 void	ft_putstr_count(void *str2, int *count, t_format *new, int len)
 {
-
 	int		i;
 	char	*str;
+
 	i = 0;
 	str = (char *)str2;
 	if (len == 6 && !str)
@@ -15,19 +15,16 @@ void	ft_putstr_count(void *str2, int *count, t_format *new, int len)
 		*count += 6;
 		return ;
 	}
-	if(new->precision == -1)
-		return;
+	if (new->precision == -1)
+		return ;
 	else if (new->precision > 0)
 	{
-		while(str[i] && new->precision)
-		{
-			ft_putchar_count(str[i++],count);
-			new->precision--;
-		}
+		while (str[i] && new->precision--)
+			ft_putchar_count(str[i++], count);
 	}
 	else
 	{
-		while(str[i])
-			ft_putchar_count(str[i++],count);
+		while (str[i])
+			ft_putchar_count(str[i++], count);
 	}
 }

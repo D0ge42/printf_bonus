@@ -52,8 +52,7 @@ int			ft_printf(const char *format, ...);
 
 // Integer/Decimal paddings
 void		left_padding(t_format *new, long long nb, int *count, int spaces);
-void		right_padding(t_format *new, long long nb, int *count,
-				int spaces);
+void		right_padding(t_format *new, long long nb, int *count, int spaces);
 void		no_padding(t_format *new, long long nb, int *count);
 void		u_left_padding(t_format *new, unsigned int nb, int *count,
 				int spaces);
@@ -83,7 +82,7 @@ void		p_handler(t_format *new, va_list args, int *count);
 // Printers
 void		ft_print_pointer(uintptr_t nb, int *count, int flag);
 void		ft_print_hexa(unsigned int nb, int *count, char c);
-void		ft_printnb_count(long long int nb, int *count,t_format *new);
+void		ft_printnb_count(long long int nb, int *count, t_format *new);
 void		ft_printunb_count(unsigned int nb, int *count);
 void		ft_putstr_count(void *str2, int *count, t_format *new, int len);
 void		ft_putchar_count(char c, int *count);

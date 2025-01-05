@@ -2,6 +2,8 @@
 
 void	zero_writer(int zeros, int *count)
 {
+	if (zeros < 0)
+		return ;
 	while (zeros)
 	{
 		ft_putchar_count('0', count);

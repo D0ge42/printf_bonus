@@ -25,9 +25,7 @@ int	get_precision(const char *format)
 	int		i;
 	int		j;
 	char	precision[11];
-	int		k;
 
-	k = 0;
 	i = 0;
 	j = 0;
 	if (format[i] == '%')
@@ -38,41 +36,34 @@ int	get_precision(const char *format)
 		i++;
 	if (format[i] == '.')
 	{
-		k = i++;
+		i++;
 		while (is_digit(format[i]) && format[i] && format[i] != '%')
 			precision[j++] = format[i++];
 	}
 	precision[j] = '\0';
-	if (format[k] == '.' && ft_strlen(precision) == 0)
+	if (format[i - j - 1] == '.' && (ft_strlen(precision) == 0
+			|| precision[0] == '0'))
 		return (-1);
-	if(format[k] == '.' && format[k+1] == '0')
-		return -1;
-	if(ft_strlen(precision) == 0 && !ft_strchr('.',format))
-		return 0;
+	if (ft_strlen(precision) == 0 && !ft_strchr('.', format))
+		return (0);
 	return (ft_atoi(precision));
 }
 
-void get_conversion(const char *format, t_format *new)
+void	get_conversion(const char *format, t_format *new)
 {
-    int i = 0;
+	int	i;
 
-    // Salta il primo '%', se presente
-    if (format[i] == '%')
-        i++;
-
-    // Analizza i flag
-    while (format[i] && is_flag(format[i]))
-        i++;
-
-    // Cerca il carattere di conversione
-    while (format[i] && !is_conversion(format[i]))
-        i++;
-
-    // Controlla se abbiamo trovato un carattere di conversione valido
-    if (format[i] && is_conversion(format[i]))
-        new->conversion = format[i];
-    else
-        new->conversion = '\0';  // Nessun carattere di conversione trovato
+	i = 0;
+	if (format[i] == '%')
+		i++;
+	while (format[i] && is_flag(format[i]))
+		i++;
+	while (format[i] && !is_conversion(format[i]))
+		i++;
+	if (format[i] && is_conversion(format[i]))
+		new->conversion = format[i];
+	else
+		new->conversion = '\0';
 }
 
 void	get_flags(t_format *new, const char *format)

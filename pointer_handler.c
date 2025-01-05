@@ -58,7 +58,7 @@ void	p_handler(t_format *new, va_list args, int *count)
 	int					spaces;
 
 	num = va_arg(args, unsigned long long);
-	spaces = new->width - max(new->precision,count_memory_address_length(num));
+	spaces = new->width - max(new->precision, count_memory_address_length(num));
 	if (new->conversion == 'p')
 	{
 		if (spaces > 0 && new->minus == 0)

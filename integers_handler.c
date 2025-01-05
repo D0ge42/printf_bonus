@@ -2,113 +2,100 @@
 
 void	left_padding(t_format *new, long long num, int *count, int spaces)
 {
-	int precision = 0;
-	if(new->space == 1 && !new->plus && num >= 0) // <-- Handle space
+	int	precision;
+
+	if (new->space == 1 && !new->plus && num >= 0)
 	{
-		ft_putchar_count(' ',count);
+		ft_putchar_count(' ', count);
 		spaces--;
 	}
-	if(new->precision > count_digits(num))
-		precision = new->precision - count_digits(num);
-	if(new->plus == 1) // <-- Handle plus
+	precision = new->precision - count_digits(num);
+	if (new->plus == 1 && num >= 0)
 	{
-		if(num >= 0)
-			ft_putchar_count('+',count);
-		else
-		{
-			ft_putchar_count('-',count);
-			num *= -1;
-		}
+		ft_putchar_count('+', count);
 		spaces--;
 	}
-	if(num < 0)
+	else if (num < 0)
 	{
-		ft_putchar_count('-',count);
-		num *= - 1;
+		ft_putchar_count('-', count);
+		num *= -1;
 	}
-	if(new->zero == 1 && spaces && new->precision == 0) //Handle 0 flag.
-		zero_writer(spaces,count);
+	if (new->zero == 1 && spaces && new->precision == 0)
+		zero_writer(spaces, count);
 	else
-		space_writer(spaces,count); // <-- Handle width
-	zero_writer(precision,count); // <-- Handle precision
-	ft_printnb_count(num,count,new); // <-- Write number
+		space_writer(spaces, count);
+	zero_writer(precision, count);
+	ft_printnb_count(num, count, new);
 }
 
 void	right_padding(t_format *new, long long num, int *count, int spaces)
 {
-	int precision = 0;
-	if(new->space == 1 && !new->plus && num >= 0) // <-- Handle space
+	int	precision;
+
+	if (new->space == 1 && !new->plus && num >= 0)
 	{
-		ft_putchar_count(' ',count);
+		ft_putchar_count(' ', count);
 		spaces--;
 	}
-	if(new->precision > count_digits(num))
-		precision = new->precision - count_digits(num);
-	if(new->plus == 1) // <-- Handle plus
+	precision = new->precision - count_digits(num);
+	if (new->plus == 1 && num >= 0)
 	{
-		if(num >= 0)
-		{
-			ft_putchar_count('+',count);
-			spaces--;
-		}
-		else
-		{
-			ft_putchar_count('-',count);
-			num *= -1;
-		}
+		ft_putchar_count('+', count);
+		spaces--;
 	}
-	if(num < 0)
+	if (num < 0)
 	{
-		ft_putchar_count('-',count);
-		num *= - 1;
+		ft_putchar_count('-', count);
+		num *= -1;
 	}
-	zero_writer(precision,count); // <-- Handle precision
-	ft_printnb_count(num,count,new); // <-- Write number
-	space_writer(spaces,count); // <-- Handle width
-
+	zero_writer(precision, count);
+	ft_printnb_count(num, count, new);
+	space_writer(spaces, count);
 }
 
 void	no_padding(t_format *new, long long num, int *count)
 {
-	int precision = 0;
-	if(new->space == 1 && !new->plus && num >= 0) // <-- Handle space
-		ft_putchar_count(' ',count);
-	if(new->precision > count_digits(num))
+	int	precision;
+
+	precision = 0;
+	if (new->space == 1 && !new->plus && num >= 0)
+		ft_putchar_count(' ', count);
+	if (new->precision > count_digits(num))
 		precision = new->precision - count_digits(num);
-	if(new->plus == 1) // <-- Handle plus
+	if (new->plus == 1)
 	{
-		if(num >= 0)
-			ft_putchar_count('+',count);
+		if (num >= 0)
+			ft_putchar_count('+', count);
 		else
 		{
-			ft_putchar_count('-',count);
+			ft_putchar_count('-', count);
 			num *= -1;
 		}
 	}
-	if(num < 0)
+	if (num < 0)
 	{
-		ft_putchar_count('-',count);
-		num *= - 1;
+		ft_putchar_count('-', count);
+		num *= -1;
 	}
-	zero_writer(precision,count); // <-- Handle precision
-	ft_printnb_count(num,count,new); // <-- Write number
+	zero_writer(precision, count);
+	ft_printnb_count(num, count, new);
 }
 
 void	int_handler(t_format *new, va_list args, int *count)
 {
 	int	spaces;
-	int num;
+	int	num;
 
 	num = va_arg(args, int);
-	spaces = new->width - max(new->precision,count_digits(num));
-	if(num < 0)
+	spaces = new->width - max(new->precision, count_digits(num));
+	if (num < 0)
 		spaces--;
-	if(new->precision == -1 && num == 0) //Needs check.
-		spaces+=1;
-	if(spaces > 0 && new->minus == 1)
-		right_padding(new,num,count,spaces);
+	if (new->precision == -1 && num == 0)
+		spaces += 1;
+	if (spaces > 0 && new->minus == 1)
+		right_padding(new, num, count, spaces);
 	else if (spaces > 0 && new->minus == 0)
-		left_padding(new,num,count,spaces);
+		left_padding(new, num, count, spaces);
 	else
-		no_padding(new,num,count);
+		no_padding(new, num, count);
 }
