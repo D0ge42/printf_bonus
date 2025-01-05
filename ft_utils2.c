@@ -55,7 +55,7 @@ int	count_memory_address_length(unsigned long long address)
 
 	count = 0;
 	if (address == 0)
-		return (3);
+		return (5);
 	while (address > 0)
 	{
 		count++;

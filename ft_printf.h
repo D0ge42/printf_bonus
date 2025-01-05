@@ -79,7 +79,6 @@ void		int_handler(t_format *new, va_list args, int *count);
 void		uint_handler(t_format *new, va_list args, int *count);
 void		hexa_handler(t_format *new, va_list args, int *count);
 void		p_handler(t_format *new, va_list args, int *count);
-void		perc_handler(t_format *new, int *count);
 
 // Printers
 void		ft_print_pointer(uintptr_t nb, int *count, int flag);

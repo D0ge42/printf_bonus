@@ -4,7 +4,10 @@ void	left_padding(t_format *new, long long num, int *count, int spaces)
 {
 	int precision = 0;
 	if(new->space == 1 && !new->plus && num >= 0) // <-- Handle space
+	{
 		ft_putchar_count(' ',count);
+		spaces--;
+	}
 	if(new->precision > count_digits(num))
 		precision = new->precision - count_digits(num);
 	if(new->plus == 1) // <-- Handle plus
@@ -35,19 +38,24 @@ void	right_padding(t_format *new, long long num, int *count, int spaces)
 {
 	int precision = 0;
 	if(new->space == 1 && !new->plus && num >= 0) // <-- Handle space
+	{
 		ft_putchar_count(' ',count);
+		spaces--;
+	}
 	if(new->precision > count_digits(num))
 		precision = new->precision - count_digits(num);
 	if(new->plus == 1) // <-- Handle plus
 	{
 		if(num >= 0)
+		{
 			ft_putchar_count('+',count);
+			spaces--;
+		}
 		else
 		{
 			ft_putchar_count('-',count);
 			num *= -1;
 		}
-		spaces--;
 	}
 	if(num < 0)
 	{
@@ -55,8 +63,6 @@ void	right_padding(t_format *new, long long num, int *count, int spaces)
 		num *= - 1;
 	}
 	zero_writer(precision,count); // <-- Handle precision
-	if(new->zero == 1 && spaces && new->precision == 0) //Handle 0 flag.
-		zero_writer(spaces,count);
 	ft_printnb_count(num,count,new); // <-- Write number
 	space_writer(spaces,count); // <-- Handle width
 
