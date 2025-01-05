@@ -63,6 +63,17 @@ void	string_handler(t_format *new, va_list args, int *count)
 		space_writer(spaces, count);
 }
 
+int ft_strchr(char c, const char *str)
+{
+	while(*str)
+	{
+		if (c == *str)
+			return 1;
+		str++;
+	}
+	return 0;
+}
+
 // void handle_spaces(t_format *new, int spaces, char *str, int len)
 // {
 // 	if (spaces > 0 && new->minus == 0)

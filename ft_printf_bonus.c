@@ -42,9 +42,8 @@ int	ft_printf(const char *format, ...)
 	return (count);
 }
 
-// int main()
-// {
-// 	int i = 0;
-// 	ft_printf(" %.s ", "-");
-// 	//printf(" %.s ", "-");
-// }
+int main()
+{
+	int i = 0;
+	ft_printf(" %04d ", 9);
+}

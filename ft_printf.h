@@ -41,6 +41,7 @@ void		free_structs(t_format **struct_array, const char *format);
 void		initialize_struct(t_format *new_s);
 int			count_udigits(unsigned int num);
 int			ft_atoi(const char *str);
+int			ft_strchr(char c, const char *str);
 
 // Width precision and len calc
 // int calculate_len(void *content, t_format *format);
