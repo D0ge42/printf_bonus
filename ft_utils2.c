@@ -61,7 +61,7 @@ int	count_memory_address_length(unsigned long long address)
 		count++;
 		address /= 16;
 	}
-	return (count + 2);
+	return (count);
 }
 
 int	max(int a, int b)

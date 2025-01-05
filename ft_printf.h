@@ -80,7 +80,7 @@ void		hexa_handler(t_format *new, va_list args, int *count);
 void		p_handler(t_format *new, va_list args, int *count);
 
 // Printers
-void		ft_print_pointer(uintptr_t nb, int *count, int flag);
+void		ft_print_pointer(uintptr_t nb, int *count);
 void		ft_print_hexa(unsigned int nb, int *count, char c);
 void		ft_printnb_count(long long int nb, int *count, t_format *new);
 void		ft_printunb_count(unsigned int nb, int *count);
