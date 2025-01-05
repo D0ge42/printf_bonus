@@ -44,5 +44,7 @@ int	ft_printf(const char *format, ...)
 
 // int main()
 // {
-// 	ft_printf("%.s","ciao");
+// 	int i = 0;
+// 	ft_printf(" %.s ", "-");
+// 	//printf(" %.s ", "-");
 // }

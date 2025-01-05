@@ -83,7 +83,7 @@ void		perc_handler(t_format *new, int *count);
 // Printers
 void		ft_print_pointer(uintptr_t nb, int *count, int flag);
 void		ft_print_hexa(unsigned int nb, int *count, char c);
-void		ft_printnb_count(long long int nb, int *count);
+void		ft_printnb_count(long long int nb, int *count,t_format *new);
 void		ft_printunb_count(unsigned int nb, int *count);
 void		ft_putstr_count(void *str2, int *count, t_format *new, int len);
 void		ft_putchar_count(char c, int *count);

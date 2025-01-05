@@ -45,6 +45,8 @@ int	get_precision(const char *format)
 	precision[j] = '\0';
 	if (format[k] == '.' && ft_strlen(precision) == 0)
 		return (-1);
+	if(ft_strlen(precision) == 0)
+		return -1;
 	return (ft_atoi(precision));
 }
 

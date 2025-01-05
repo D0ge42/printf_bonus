@@ -54,13 +54,8 @@ void	string_handler(t_format *new, va_list args, int *count)
 	else
 		len = 6;
 	spaces = new->width - (len);
-	if(new->precision < len && spaces >= 0)
+	if(new->precision != -1 && new->precision < len && spaces >= 0)
 		spaces+=new->precision;
-	if (new->precision == -1)
-	{
-		str = "";
-		len = 0;
-	}
 	if (new->minus == 0 && spaces > 0)
 		space_writer(spaces, count);
 	ft_putstr_count(str, count, new, len);
