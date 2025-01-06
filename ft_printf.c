@@ -28,9 +28,3 @@ int	ft_printf(const char *format, ...)
 	va_end(args);
 	return (count);
 }
-
-int main()
-{
-	void *ptr_null = NULL;
-	ft_printf("%.60p",ptr_null);
-}

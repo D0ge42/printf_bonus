@@ -6,7 +6,8 @@ void	p_left_padding(t_format *new, unsigned long long num, int *count,
 	int	precision;
 
 	precision = new->precision - count_memory_address_length(num);
-	if (spaces > 0 && new->minus == 1)
+	precision = 0;
+	if (spaces > 0 && new->minus == 1 && num != 0)
 	{
 		if (precision > 0)
 		{
@@ -33,12 +34,12 @@ void	p_right_padding(t_format *new, unsigned long long num, int *count,
 		zero_writer(spaces, count);
 	else
 		space_writer(spaces, count);
-	if (precision > 0)
+	if (precision > 0 && num != 0)
 	{
 		while (precision--)
 			ft_putchar_count('0', count);
 	}
-	if(num != 0)
+	if (num != 0)
 	{
 		ft_putchar_count('0', count);
 		ft_putchar_count('x', count);
@@ -51,12 +52,12 @@ void	p_no_padding(t_format *new, unsigned long long num, int *count)
 	int	precision;
 
 	precision = new->precision - count_memory_address_length(num);
-	if(num != 0)
+	if (num != 0)
 	{
 		ft_putchar_count('0', count);
 		ft_putchar_count('x', count);
 	}
-	if (precision > 0)
+	if (precision > 0 && num != 0)
 	{
 		while (precision--)
 			ft_putchar_count('0', count);
@@ -71,8 +72,8 @@ void	p_handler(t_format *new, va_list args, int *count)
 
 	num = va_arg(args, unsigned long long);
 	spaces = new->width - max(new->precision, count_memory_address_length(num));
-	if(num != 0)
-		spaces-=2;
+	if (num != 0)
+		spaces -= 2;
 	if (new->conversion == 'p')
 	{
 		if (spaces > 0 && new->minus == 0)
