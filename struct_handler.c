@@ -1,17 +1,7 @@
 #include "ft_printf.h"
 
-int	ft_strlen(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
-
 /*Takes format string and makes a structure out of it,
-	with all the relative infos.*/
+	with all the relative info.*/
 
 t_format	*create_struct(const char *format)
 {

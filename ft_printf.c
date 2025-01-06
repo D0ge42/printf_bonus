@@ -1,5 +1,11 @@
 #include "ft_printf.h"
 
+/*ft_printf workflow
+1) Create a struct array. Number of struct depends on number of %
+2) Each struct will be filled with specific info of current %.
+3) From each struct we'll print the resulting string, 
+made of different,flags,width and precision*/
+
 int	ft_printf(const char *format, ...)
 {
 	int			j;

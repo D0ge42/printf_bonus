@@ -26,31 +26,28 @@ typedef struct s_format
 }			t_format;
 
 // Utils
+int			ft_strlen(char *str);
 int			is_conversion(char c);
 int			is_flag(char c);
 int			is_digit(char c);
 int			perc_counter(char c, const char *str);
-void		jump_index(const char *format, int *i);
 int			count_digits(long long num);
 int			count_hex_digits(unsigned int num);
 int			count_memory_address_length(unsigned long long ptr);
-void		space_writer(int spaces, int *count);
 int			max(int a, int b);
-void		zero_writer(int zeros, int *count);
-void		free_structs(t_format **struct_array, const char *format);
-void		initialize_struct(t_format *new_s);
 int			count_udigits(unsigned int num);
 int			ft_atoi(const char *str);
 int			ft_strchr(char c, const char *str);
+void		jump_index(const char *format, int *i);
+void		space_writer(int spaces, int *count);
+void		zero_writer(int zeros, int *count);
+void		free_structs(t_format **struct_array, const char *format);
+void		initialize_struct(t_format *new_s);
 
-// Width precision and len calc
-// int calculate_len(void *content, t_format *format);
-int			ft_strlen(char *str);
-
-//
+//Main function
 int			ft_printf(const char *format, ...);
 
-// Integer/Decimal paddings
+// Different types paddings
 void		left_padding(t_format *new, long long nb, int *count, int spaces);
 void		right_padding(t_format *new, long long nb, int *count, int spaces);
 void		no_padding(t_format *new, long long nb, int *count);
@@ -71,7 +68,6 @@ void		p_right_padding(t_format *new, unsigned long long nb, int *count,
 void		p_no_padding(t_format *new, unsigned long long nb, int *count);
 
 // Handlers
-
 void		string_handler(t_format *new, va_list args, int *count);
 void		char_handler(t_format *new, va_list args, int *count);
 void		int_handler(t_format *new, va_list args, int *count);
@@ -86,6 +82,8 @@ void		ft_printnb_count(long long int nb, int *count, t_format *new);
 void		ft_printunb_count(unsigned int nb, int *count);
 void		ft_putstr_count(void *str2, int *count, t_format *new, int len);
 void		ft_putchar_count(char c, int *count);
+void		space_writer(int spaces, int *count);
+void		zero_writer(int zeros, int *count);
 void		ft_putstr(char *str);
 
 // Struct handleer
@@ -96,9 +94,5 @@ void		get_flags(t_format *new, const char *format);
 int			get_width(const char *format);
 int			get_precision(const char *format);
 void		get_conversion(const char *format, t_format *new);
-
-// Util functions to remove
-void		print_struct(t_format *new);
-// atoi
 
 #endif
