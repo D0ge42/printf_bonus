@@ -25,6 +25,8 @@ void	free_structs(t_format **struct_array, const char *format)
 	int	i;
 	int	struct_count;
 
+	if (!struct_array)
+		return ;
 	i = 0;
 	struct_count = perc_counter('%', format);
 	while (i < struct_count)

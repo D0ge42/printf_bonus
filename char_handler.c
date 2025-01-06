@@ -1,5 +1,7 @@
 #include "ft_printf.h"
 
+/*Handle every combination of width/precision for chars. */
+
 void	char_handler(t_format *new, va_list args, int *count)
 {
 	int		spaces;

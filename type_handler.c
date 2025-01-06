@@ -1,5 +1,10 @@
 #include "ft_printf.h"
 
+/*Struct to string takes a va_list, the current structure and count
+Here the current struct is passed to its respect conversion handler
+along with va_list and count.
+Everything will then be handled in its respective "container"*/
+
 void	struct_to_string(t_format *new, va_list args, int *count)
 {
 	if (new->conversion == 's')

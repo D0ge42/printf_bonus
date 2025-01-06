@@ -1,5 +1,7 @@
 #include "ft_printf.h"
 
+/*Handle padding when there's no minus flag and padding*/
+
 void	p_left_padding(t_format *new, unsigned long long num, int *count,
 		int spaces)
 {
@@ -24,6 +26,8 @@ void	p_left_padding(t_format *new, unsigned long long num, int *count,
 	}
 }
 
+/*Handle padding when there's minus flag and padding*/
+
 void	p_right_padding(t_format *new, unsigned long long num, int *count,
 		int spaces)
 {
@@ -46,6 +50,8 @@ void	p_right_padding(t_format *new, unsigned long long num, int *count,
 	}
 	ft_print_pointer(num, count);
 }
+
+/*Handle conversion when no padding is provided*/
 
 void	p_no_padding(t_format *new, unsigned long long num, int *count)
 {

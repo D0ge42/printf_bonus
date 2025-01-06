@@ -13,6 +13,9 @@
 # define BASE_HEXA_LC "0123456789abcdef"
 # define BASE_HEXA_UIPPER "0123456789ABCDEF"
 
+/*Main structure. Handles everything as if each variable is a light switch.
+Depending on if it's turned on or off a different output will be produced*/
+
 typedef struct s_format
 {
 	int		minus;
@@ -25,7 +28,8 @@ typedef struct s_format
 	char	conversion;
 }			t_format;
 
-// Utils
+/*Utils*/
+
 int			ft_strlen(char *str);
 int			is_conversion(char c);
 int			is_flag(char c);
@@ -44,10 +48,12 @@ void		zero_writer(int zeros, int *count);
 void		free_structs(t_format **struct_array, const char *format);
 void		initialize_struct(t_format *new_s);
 
-//Main function
+/*Main function*/
+
 int			ft_printf(const char *format, ...);
 
-// Different types paddings
+/*Different types paddings*/
+
 void		left_padding(t_format *new, long long nb, int *count, int spaces);
 void		right_padding(t_format *new, long long nb, int *count, int spaces);
 void		no_padding(t_format *new, long long nb, int *count);
@@ -67,7 +73,7 @@ void		p_right_padding(t_format *new, unsigned long long nb, int *count,
 				int spaces);
 void		p_no_padding(t_format *new, unsigned long long nb, int *count);
 
-// Handlers
+/*Handlers*/
 void		string_handler(t_format *new, va_list args, int *count);
 void		char_handler(t_format *new, va_list args, int *count);
 void		int_handler(t_format *new, va_list args, int *count);
@@ -75,7 +81,7 @@ void		uint_handler(t_format *new, va_list args, int *count);
 void		hexa_handler(t_format *new, va_list args, int *count);
 void		p_handler(t_format *new, va_list args, int *count);
 
-// Printers
+/*Printers*/
 void		ft_print_pointer(uintptr_t nb, int *count);
 void		ft_print_hexa(unsigned int nb, int *count, char c);
 void		ft_printnb_count(long long int nb, int *count, t_format *new);
@@ -86,7 +92,8 @@ void		space_writer(int spaces, int *count);
 void		zero_writer(int zeros, int *count);
 void		ft_putstr(char *str);
 
-// Struct handleer
+/*Struct handleer*/
+
 void		struct_to_string(t_format *new, va_list args, int *count);
 t_format	*create_struct(const char *format);
 t_format	**create_struct_array(const char *format);
