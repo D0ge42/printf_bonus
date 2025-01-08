@@ -24,12 +24,10 @@ bonus: all
 
 clean:
 	$(RM) $(OBJS)
-	$(RM)
 
 fclean: clean
 	$(RM) $(NAME)
-	$(RM)
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re bonus
