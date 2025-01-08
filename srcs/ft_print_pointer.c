@@ -1,46 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_utils4.c                                        :+:      :+:    :+:   */
+/*   ft_print_pointer.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lonulli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/07 09:17:33 by lonulli           #+#    #+#             */
-/*   Updated: 2025/01/07 09:17:35 by lonulli          ###   ########.fr       */
+/*   Created: 2025/01/07 09:16:48 by lonulli           #+#    #+#             */
+/*   Updated: 2025/01/07 09:16:49 by lonulli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../includes/ft_printf.h"
 
-void	ft_putstr(char *str)
+int	ptr_is_null(void *nb, int *count)
 {
-	while (*str)
-		write(1, str++, 1);
-}
-
-void	ft_putchar_count(char c, int *count)
-{
-	write(1, &c, 1);
-	*count += 1;
-}
-
-int	ft_strchr(char c, const char *str)
-{
-	while (*str)
+	if (!nb)
 	{
-		if (c == *str)
-			return (1);
-		str++;
+		ft_putstr("(nil)");
+		*count += 5;
+		return (1);
 	}
 	return (0);
 }
 
-int	ft_strlen(char *str)
+void	ft_print_pointer(uintptr_t nb, int *count)
 {
-	int	i;
+	char	*lc_hexa_base;
 
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
+	if (ptr_is_null((void *)nb, count) == 1)
+		return ;
+	lc_hexa_base = "0123456789abcdef";
+	if (nb >= 16)
+		ft_print_pointer(nb / 16, count);
+	ft_putchar_count(lc_hexa_base[nb % 16], count);
 }

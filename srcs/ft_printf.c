@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../includes/ft_printf.h"
 
 /*ft_printf workflow
 1) Create a struct array. Number of struct depends on number of %

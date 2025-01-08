@@ -1,6 +1,6 @@
 NAME = libftprintf.a
 
-FT_PRINTF_SRC = $(wildcard *.c) 
+FT_PRINTF_SRC = $(wildcard srcs/*.c) 
 
 SRC = $(FT_PRINTF_SRC)
 
